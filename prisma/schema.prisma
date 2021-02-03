@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Activity {
+  id              Int        @id @default(autoincrement())
+  activity_name   String
+  description     String
+}
+
+model Address {
+  id              Int        @id @default(autoincrement())
+  name            String
+  street          String
+  zipcode         Int
+  description     String
+  brunch          Boolean
+  breakfast       Boolean
+  snack           Boolean
+  lunch_diner     Boolean
+  ocean           Boolean
+  }
