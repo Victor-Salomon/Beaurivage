@@ -1,14 +1,17 @@
 import Head from "next/head";
-import Header from "./Header";
+import Header from "../components/Header/Header";
+import Footer from "./Footer";
 
-export default function Layout({ children, page }) {
+export default function Layout({ children }) {
   return (
     <>
       <Head>
-        <title>{page}</title>
+        <title>BEAURIVAGES DREAMS</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main>{children}</main>
+      {children}
+      <Footer />
     </>
   );
 }

@@ -6,20 +6,20 @@ const OpenBurger = ({ toggle }) => {
   return (
     <BurgerContainer>
       <CloseLogo onClick={toggle}>
-        <GrFormClose style={{ fontSize: "2em" }} />
+        <GrFormClose style={{ fontSize: "2em", color: "#1b474a" }} />
       </CloseLogo>
       <ItemList>
         <Link href="/Appartment">
-          <a>L'APPARTEMENT</a>
+          <LiMenuStyled>L'APPARTEMENT</LiMenuStyled>
         </Link>
         <Link href="/Address">
-          <a>ADRESSES INCONTOURNABLES</a>
+          <LiMenuStyled>ADRESSES INCONTOURNABLES</LiMenuStyled>
         </Link>
         <Link href="/Activities">
-          <a>ACTIVITES</a>
+          <LiMenuStyled>ACTIVITES</LiMenuStyled>
         </Link>
         <Link href="/Contact">
-          <a>CONTACT</a>
+          <LiMenuStyled>CONTACT</LiMenuStyled>
         </Link>
       </ItemList>
     </BurgerContainer>
@@ -54,6 +54,11 @@ const ItemList = styled.ul`
   align-items: center;
   padding-left: 0px;
   margin: 0px;
+`;
+const LiMenuStyled = styled.li`
+  color: #1b474a;
+  text-decoration: none;
+  list-style: none;
 `;
 
 export default OpenBurger;

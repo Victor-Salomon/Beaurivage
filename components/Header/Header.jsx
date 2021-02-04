@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import OpenBurger from "./OpenBurger";
 
@@ -68,7 +68,7 @@ const Line = styled.div`
   height: 2px;
   margin: 7px;
   border-radius: 5px;
-  background-color: black;
+  background-color: #1b474a;
 `;
 
 const NavStyled = styled.div`
@@ -86,6 +86,9 @@ const NavStyled = styled.div`
 `;
 const LogoStyled = styled.a`
   cursor: pointer;
+  font-family: "Pragati Narrow", sans-serif;
+  font-size: 18px;
+  color: #1b474a;
 `;
 const UlMenuStyled = styled.ul`
   display: flex;
@@ -100,6 +103,9 @@ const LiMenuStyled = styled.li`
   text-decoration: none;
   list-style: none;
   padding: 20px;
+  font-family: "Pragati Narrow", sans-serif;
+  font-size: 18px;
+  color: #1b474a;
   cursor: pointer;
   @media (max-width: 768px) {
     padding: 20px;
