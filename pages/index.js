@@ -1,6 +1,7 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styled from "styled-components";
 import Layout from "../components/Layout";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
       <main className="">
         <div className="">
           <Layout page="Beaurivage - Home">
-            <h1>Hello</h1>
+            <div>
+              <h1 className={styles.backgroundHome}>HELLO</h1>
+            </div>
           </Layout>
         </div>
       </main>

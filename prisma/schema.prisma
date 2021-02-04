@@ -22,9 +22,9 @@ model Address {
   street          String
   zipcode         Int
   description     String
-  brunch          Boolean
-  breakfast       Boolean
-  snack           Boolean
-  lunch_diner     Boolean
-  ocean           Boolean
+  brunch          Boolean?
+  breakfast       Boolean?
+  snack           Boolean?
+  lunch_diner     Boolean?
+  ocean           Boolean?
   }
