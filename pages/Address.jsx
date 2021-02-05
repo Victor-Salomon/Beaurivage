@@ -1,8 +1,22 @@
 import axios from "axios";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Address = ({ address }) => {
+  const [newAddressList, setNewAddressList] = useState([]);
+  const [currentChoice, setCurrentChoice] = useState("");
+  const [toggleAddress, setToggleAddress] = useState(false);
+
+  const handleToggle = () => {
+    setToggleAddress(!toggleAddress);
+  };
+
+  useEffect(() => {
+    const filtredAdress = address.filter((a) => a[currentChoice]);
+    setNewAddressList(filtredAdress);
+  }, [currentChoice]);
+
   return (
     <MainStyleAddress>
       <LeftDivAddress>
@@ -41,26 +55,92 @@ const Address = ({ address }) => {
       <RightDivAddress>
         <H2StyledAddress> MES BONNES ADDRESSES</H2StyledAddress>
         <div>
-          <button>Bruncher</button>
-          <button>Petit Dejeuner</button>
-          <button>Dejeuner//button></button>
-          <button>Gouter</button>
-          <button>Diner</button>
-          <button>Avec Vue Océan</button>
+          <button
+            onClick={() => {
+              setCurrentChoice("brunch");
+              handleToggle();
+            }}
+          >
+            Bruncher
+          </button>
+          <button
+            onClick={() => {
+              setCurrentChoice("breakfast");
+              handleToggle();
+            }}
+          >
+            Petit Dejeuner
+          </button>
+          <button
+            onClick={() => {
+              setCurrentChoice("lunch_diner");
+              handleToggle();
+            }}
+          >
+            Dejeuner
+          </button>
+          <button
+            onClick={() => {
+              setCurrentChoice("snack");
+              handleToggle();
+            }}
+          >
+            Gouter
+          </button>
+          <button
+            onClick={() => {
+              setCurrentChoice("lunch_diner");
+              handleToggle();
+            }}
+          >
+            Diner
+          </button>
+          <button
+            onClick={() => {
+              setCurrentChoice("ocean");
+              handleToggle();
+            }}
+          >
+            Avec Vue Océan
+          </button>
         </div>
+        {/* short circuit operator */}
+        {handleToggle && (
+          <ul>
+            {newAddressList.map((a) => {
+              return (
+                <>
+                  <li key={a.id}>
+                    {a.name} {a.street} {a.zipcode} {a.description}
+                  </li>
+                </>
+              );
+            })}
+          </ul>
+        )}
       </RightDivAddress>
     </MainStyleAddress>
   );
 };
+
 export default Address;
 
 export async function getServerSideProps(context) {
-  const address = await axios.get("http://localhost:3000/api/address");
-  return {
-    props: {
-      address: address.data,
-    }, // will be passed to the page component as props
-  };
+  try {
+    const address = await axios.get("http://localhost:3000/api/address");
+    return {
+      props: {
+        address: address.data,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        error: error.data,
+      },
+    };
+  }
 }
 
 const MainStyleAddress = styled.div`
