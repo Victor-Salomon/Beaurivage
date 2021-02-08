@@ -55,54 +55,54 @@ const Address = ({ address }) => {
       <RightDivAddress>
         <H2StyledAddress> MES BONNES ADDRESSES</H2StyledAddress>
         <div>
-          <button
+          <Button
             onClick={() => {
               setCurrentChoice("brunch");
               handleToggle();
             }}
           >
             Bruncher
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => {
               setCurrentChoice("breakfast");
               handleToggle();
             }}
           >
             Petit Dejeuner
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => {
               setCurrentChoice("lunch_diner");
               handleToggle();
             }}
           >
             Dejeuner
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => {
               setCurrentChoice("snack");
               handleToggle();
             }}
           >
             Gouter
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => {
               setCurrentChoice("lunch_diner");
               handleToggle();
             }}
           >
             Diner
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => {
               setCurrentChoice("ocean");
               handleToggle();
             }}
           >
             Avec Vue Océan
-          </button>
+          </Button>
         </div>
         {/* short circuit operator */}
         {handleToggle && (
@@ -143,6 +143,11 @@ export async function getServerSideProps(context) {
   }
 }
 
+const Button = styled.button`
+  background-color: #f2d0a4;
+  margin: 10px;
+`;
+
 const MainStyleAddress = styled.div`
   display: flex;
   flex-direction: row;
@@ -167,6 +172,9 @@ const LeftDivText = styled.div`
 const RightDivAddress = styled.div`
   width: 50vw;
   height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Span1 = styled.span`
@@ -227,16 +235,6 @@ const H2StyledAddress = styled.h2`
     padding: 10%;
   }
 `;
-
-{
-  /* <div key={add.id}>
-{add.name}
-<p>Adresse : </p>
-{add.street}
-{add.zipcode}
-{add.description}
-</div> */
-}
 
 const PStyledAddress = styled.p`
   padding-top: 50px;

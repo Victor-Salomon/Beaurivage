@@ -10,14 +10,6 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
-  //   useEffect(() => {
-  //     if (isOpen) {
-  //       document.body.style.overflow = "hidden";
-  //     } else {
-  //       document.body.style.overflow = "scroll";
-  //     }
-  //   }, [isOpen]);
-
   return (
     <>
       {isOpen && <OpenBurger toggle={toggle} />}
@@ -53,6 +45,24 @@ const Header = () => {
   );
 };
 
+const NavStyled = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  /* background-color: #f2d0a4; */
+  @media (max-width: 768px) {
+    /* position: unset; */
+  }
+`;
+const LogoStyled = styled.a`
+  cursor: pointer;
+  font-family: "Pragati Narrow", sans-serif;
+  font-size: 18px;
+  color: #1b474a;
+`;
+
 const BurgerLogo = styled.div`
   width: 30px;
   height: 50px;
@@ -71,25 +81,6 @@ const Line = styled.div`
   background-color: #1b474a;
 `;
 
-const NavStyled = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 30px;
-  margin-right: 30px;
-  @media (max-width: 768px) {
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 30px;
-  }
-`;
-const LogoStyled = styled.a`
-  cursor: pointer;
-  font-family: "Pragati Narrow", sans-serif;
-  font-size: 18px;
-  color: #1b474a;
-`;
 const UlMenuStyled = styled.ul`
   display: flex;
   width: 100%;
