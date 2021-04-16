@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
+import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-const Forms = () => {
+export default function Forms = () => {
+  const { user, error, isLoading } = useUser();
   const [activity, setActivity] = useState("");
   const [description, setDescription] = useState("");
-
   const [addressName, setAddressName] = useState("");
   const [addressStreet, setAddressStreet] = useState("");
   const [addressZipcode, setAddressZipcode] = useState("");
@@ -130,6 +131,8 @@ const Forms = () => {
   );
 };
 
+export const getServerSideProps = withPageAuthRequired();
+
 const MainStyleBo = styled.div`
   display: flex;
   flex-direction: column;
@@ -161,12 +164,12 @@ const StyleBoAddForm1 = styled.div`
     align-items: center;
   } */
 `;
-
 const H1Bo = styled.h1`
   font-family: "Pragati Narrow", sans-serif;
   font-size: 50px;
   color: #1b474a;
   text-align: center;
+  margin-top:10%;
   /* @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -184,5 +187,3 @@ const H2Bo = styled.h2`
     align-items: center;
   } */
 `;
-
-export default Forms;

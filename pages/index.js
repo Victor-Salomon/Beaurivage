@@ -12,7 +12,7 @@ export default function Home() {
           alt="Picture of the author"
           width={500}
           height={300}
-          style={{ marginTop: "50px" }}
+          style={{ marginTop: "100px" }}
         />
         <PStyledBG>
           Vous allez evidemment passer un bon séjour. On a même plus besoin de
@@ -34,8 +34,8 @@ const MainStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: blue;
-  height: 100vh;
+  padding-top: 10%;
+  height: 80vh;
   @media (max-width: 768px) {
     height: 100vh;
   }
@@ -44,6 +44,7 @@ const MainStyle = styled.div`
 const PStyledBG = styled.p`
   width: 70vw;
   text-align: justify;
+  margin-top: 20%;
   margin: 5%;
   color: white;
   font-family: "Pragati Narrow", sans-serif;

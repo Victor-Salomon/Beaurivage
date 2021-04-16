@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import styled from "styled-components";
 import OpenBurger from "./OpenBurger";
+import { useUser } from '@auth0/nextjs-auth0';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +10,8 @@ const Header = () => {
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
+  const { user } = useUser();
 
   return (
     <>
@@ -26,7 +29,7 @@ const Header = () => {
             <Line></Line>
           </BurgerLogo>
           <UlMenuStyled>
-            <Link href="/Appartment">
+            {/* <Link href="/Appartment">
               <LiMenuStyled>L'APPARTEMENT</LiMenuStyled>
             </Link>
             <Link href="/Address">
@@ -37,7 +40,27 @@ const Header = () => {
             </Link>
             <Link href="/Contact">
               <LiMenuStyled>CONTACT</LiMenuStyled>
+            </Link> */}
+            <Link href="/BackOffice">
+              <LiMenuStyled>BACKOFFICE</LiMenuStyled>
             </Link>
+            {user ? (
+            <>
+              <LiMenuStyled>
+                <a href="/api/auth/logout" data-testid="logout">
+                  LOGOUT
+                </a>
+              </LiMenuStyled>
+            </>
+          ) : (
+            <>
+              <LiMenuStyled>
+                <a href="/api/auth/login" data-testid="login">
+                  LOGIN
+                </a>
+              </LiMenuStyled>
+            </>
+          )}
           </UlMenuStyled>
         </div>
       </NavStyled>
@@ -50,7 +73,8 @@ const NavStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  width: 100vw;
+  width: 80vw;
+  margin :0% 10%;
   /* background-color: #f2d0a4; */
   @media (max-width: 768px) {
     /* position: unset; */
